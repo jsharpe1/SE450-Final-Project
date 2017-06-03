@@ -8,4 +8,19 @@ public class JPaintController implements IPaintController {
     public JPaintController(UIModule uiModule){
         _uiModule = uiModule;
     }
+
+    @Override
+    public void initialize() {
+        // create canvas, menu, buttons, listeners, etc.
+    }
+
+    @Override
+    public void display() {
+        // main running method.
+    }
+
+    @Override
+    public void destroy() {
+        // destroy objects as you can.
+    }
 }

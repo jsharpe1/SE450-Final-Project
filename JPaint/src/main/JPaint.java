@@ -10,6 +10,8 @@ public class JPaint {
     }
 
     public void run() {
-
+        _controller.initialize();
+        _controller.display();
+        _controller.destroy();
     }
 }

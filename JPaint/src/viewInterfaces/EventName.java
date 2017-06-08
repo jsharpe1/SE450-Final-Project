@@ -1,0 +1,14 @@
+package viewInterfaces;
+
+public enum EventName {
+	POINT,
+	LINE,
+	ELIPSE,
+	RECTANGLE,
+	TRIANGLE, 
+	FILL_COLOR,
+	CHOOSE_PRIMARY_COLOR,
+	CHOOSE_SECONDARY_COLOR,
+	MOVE,
+	DELETE
+}

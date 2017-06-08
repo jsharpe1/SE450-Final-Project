@@ -12,6 +12,7 @@ public class JPaintController implements IPaintController {
     @Override
     public void initialize() {
         // create canvas, menu, buttons, listeners, etc.
+        _uiModule.initialize();
     }
 
     @Override

@@ -2,16 +2,14 @@ package main;
 
 import controller.IPaintController;
 
-public class JPaint {
+class JPaint {
     private IPaintController _controller;
 
-    public JPaint(IPaintController controller) {
+    JPaint(IPaintController controller) {
         _controller = controller;
     }
 
-    public void run() {
-        _controller.initialize();
-        _controller.display();
-        _controller.destroy();
+    void run() {
+        _controller.run();
     }
 }

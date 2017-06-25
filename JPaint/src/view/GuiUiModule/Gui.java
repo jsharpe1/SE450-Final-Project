@@ -1,13 +1,15 @@
 package view.GuiUiModule;
 
-import javax.swing.JButton;
+import javax.swing.*;
 
 import viewInterfaces.EventName;
-import viewInterfaces.ICommand;
+import ControllerInterfaces.ICommand;
+import viewInterfaces.IDialogChoice;
 import viewInterfaces.UIModule;
 
 public class Gui implements UIModule {
-    GuiWindow gui = new GuiWindow();
+
+    private final GuiWindow gui = new GuiWindow();
 
     @Override
     public void initialize() {
@@ -19,4 +21,15 @@ public class Gui implements UIModule {
 		JButton button = gui.getButton(eventName);
 		button.addActionListener((ActionEvent) -> command.run());
 	}
+
+    @Override
+    public <T> T getDialogResponse(IDialogChoice dialogSettings) {
+        Object selectedValue = JOptionPane.showInputDialog(null,
+                dialogSettings.getDialogText(), dialogSettings.getDialogTitle(),
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                dialogSettings.getDialogOptions(),
+                dialogSettings.getDefaultChoice());
+        return (T)selectedValue;
+    }
 }

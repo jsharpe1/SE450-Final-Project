@@ -12,15 +12,15 @@ import viewInterfaces.EventName;
 
 import java.awt.*;
 
-public class GuiWindow extends JFrame implements IGuiWindow {
-    private final int defaultWidth = 1200;
+class GuiWindow extends JFrame implements IGuiWindow {
+    private final int defaultWidth = 1242;
     private final int defaultHeight = 800;
     private final String defaultTitle = "JPaint";
     private final Insets defaultButtonDimensions 
     	= new Insets(5, 15, 5, 15);
     private final Map<EventName, JButton> eventButtons = new HashMap<>();
 
-    public GuiWindow(){
+    GuiWindow(){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle(defaultTitle);
         setSize(defaultWidth, defaultHeight);
@@ -30,7 +30,7 @@ public class GuiWindow extends JFrame implements IGuiWindow {
 		validate();
     }
 
-	public JButton getButton(EventName eventName) {
+	JButton getButton(EventName eventName) {
 		if(!eventButtons.containsKey(eventName))
 			throw new NoSuchElementException("No button exists for action " + eventName.toString());
 		
@@ -47,17 +47,10 @@ public class GuiWindow extends JFrame implements IGuiWindow {
     private JPanel createMenu() {
         JPanel buttonPanel = createButtonPanel();
 
-        addButtonToPanel(EventName.POINT, buttonPanel);
-        addButtonToPanel(EventName.LINE, buttonPanel);
-        addButtonToPanel(EventName.ELIPSE, buttonPanel);
-        addButtonToPanel(EventName.RECTANGLE, buttonPanel);
-        addButtonToPanel(EventName.TRIANGLE, buttonPanel);
-        addButtonToPanel(EventName.FILL_COLOR, buttonPanel);
-        addButtonToPanel(EventName.CHOOSE_PRIMARY_COLOR, buttonPanel);
-        addButtonToPanel(EventName.CHOOSE_SECONDARY_COLOR, buttonPanel);
-        addButtonToPanel(EventName.MOVE, buttonPanel);
-        addButtonToPanel(EventName.DELETE, buttonPanel);
-        
+        for(EventName eventName : EventName.values()){
+            addButtonToPanel(eventName, buttonPanel);
+        }
+
         return buttonPanel;
     }
 

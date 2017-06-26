@@ -19,18 +19,19 @@ class GuiWindow extends JFrame implements IGuiWindow {
     private final Insets defaultButtonDimensions 
     	= new Insets(5, 15, 5, 15);
     private final Map<EventName, JButton> eventButtons = new HashMap<>();
+    private final PaintCanvas canvas;
 
     GuiWindow(){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle(defaultTitle);
         setSize(defaultWidth, defaultHeight);
         JPanel window = createWindow();
-
-        window.add(new PaintCanvas(), BorderLayout.CENTER);
+        canvas = new PaintCanvas();
+        window.add(canvas, BorderLayout.CENTER);
 		validate();
     }
 
-	JButton getButton(EventName eventName) {
+    JButton getButton(EventName eventName) {
 		if(!eventButtons.containsKey(eventName))
 			throw new NoSuchElementException("No button exists for action " + eventName.toString());
 		
@@ -89,5 +90,20 @@ class GuiWindow extends JFrame implements IGuiWindow {
         contentPane.setBackground(Color.WHITE);
         setContentPane(contentPane);
         return contentPane;
+    }
+
+    public void draw() {
+        Graphics  g = getGraphics();
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setColor(new Color(255, 0, 0));
+
+        int x = 10;
+        int y = 20;
+
+        g2.fillRect(x, y, 150, 140);
+
+        g2.setStroke(new BasicStroke(5));
+        g2.setColor(new Color(0, 0, 0));
+        g2.drawRect(x, y, 150, 140);
     }
 }

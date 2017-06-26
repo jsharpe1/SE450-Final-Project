@@ -1,26 +1,21 @@
 package controller;
 
+import viewInterfaces.EventName;
+import viewInterfaces.IDialogChoice;
 import viewInterfaces.UIModule;
 
 public class JPaintController implements IPaintController {
-    private UIModule _uiModule;
+    private final UIModule _uiModule;
+    private final ApplicationSettings _settings = new ApplicationSettings();
 
     public JPaintController(UIModule uiModule){
         _uiModule = uiModule;
+        _settings.getDrawShapeSettings().setCurrentShape(Shape.ELLIPSE);
     }
 
     @Override
-    public void initialize() {
-        // create canvas, menu, buttons, listeners, etc.
-    }
-
-    @Override
-    public void display() {
-        // main running method.
-    }
-
-    @Override
-    public void destroy() {
-        // destroy objects as you can.
+    public void run() {
+        _uiModule.initialize();
+        _uiModule.addEvent(EventName.CHOOSE_SHAPE, new SelectShapeCommand(_settings.getDrawShapeSettings(), _uiModule));
     }
 }

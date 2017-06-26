@@ -1,5 +1,4 @@
 package modelInterfaces;
 
-public class Placeholder {
-
+public interface IShape {
 }

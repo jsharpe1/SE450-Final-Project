@@ -5,9 +5,6 @@ import view.GuiUiModule.Gui;
 import viewInterfaces.InvalidUIException;
 import viewInterfaces.UIModule;
 
-import static view.UIType.CMD;
-import static view.UIType.GUI;
-
 public class UIFactory {
     public static UIModule createUI(UIType uiType) throws InvalidUIException {
         UIModule ui;

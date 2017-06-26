@@ -1,7 +1,7 @@
 package controller;
 
+import viewInterfaces.IDialogChoice;
+
 public interface IPaintController {
-    void initialize();
-    void display();
-    void destroy();
+    void run();
 }

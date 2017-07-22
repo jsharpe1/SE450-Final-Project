@@ -12,7 +12,7 @@ import viewInterfaces.EventName;
 
 import java.awt.*;
 
-class GuiWindow extends JFrame implements IGuiWindow {
+public class GuiWindow extends JFrame implements IGuiWindow {
     private final int defaultWidth = 1242;
     private final int defaultHeight = 800;
     private final String defaultTitle = "JPaint";
@@ -21,7 +21,8 @@ class GuiWindow extends JFrame implements IGuiWindow {
     private final Map<EventName, JButton> eventButtons = new HashMap<>();
     private final PaintCanvas canvas;
 
-    GuiWindow(){
+    public GuiWindow(){
+        setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle(defaultTitle);
         setSize(defaultWidth, defaultHeight);
@@ -31,7 +32,8 @@ class GuiWindow extends JFrame implements IGuiWindow {
 		validate();
     }
 
-    JButton getButton(EventName eventName) {
+    @Override
+	public JButton getButton(EventName eventName) {
 		if(!eventButtons.containsKey(eventName))
 			throw new NoSuchElementException("No button exists for action " + eventName.toString());
 		
@@ -90,20 +92,5 @@ class GuiWindow extends JFrame implements IGuiWindow {
         contentPane.setBackground(Color.WHITE);
         setContentPane(contentPane);
         return contentPane;
-    }
-
-    public void draw() {
-        Graphics  g = getGraphics();
-        Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(new Color(255, 0, 0));
-
-        int x = 10;
-        int y = 20;
-
-        g2.fillRect(x, y, 150, 140);
-
-        g2.setStroke(new BasicStroke(5));
-        g2.setColor(new Color(0, 0, 0));
-        g2.drawRect(x, y, 150, 140);
     }
 }

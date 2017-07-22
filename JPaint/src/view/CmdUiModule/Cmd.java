@@ -6,10 +6,6 @@ import viewInterfaces.IDialogChoice;
 import viewInterfaces.UIModule;
 
 public class Cmd implements UIModule {
-    @Override
-    public void initialize() {
-        // do nothing.
-    }
 
 	@Override
 	public void addEvent(EventName eventName, ICommand command) {

@@ -1,7 +1,6 @@
 package controller;
 
 import viewInterfaces.EventName;
-import viewInterfaces.IDialogChoice;
 import viewInterfaces.UIModule;
 
 public class JPaintController implements IPaintController {
@@ -15,7 +14,6 @@ public class JPaintController implements IPaintController {
 
     @Override
     public void run() {
-        _uiModule.initialize();
         _uiModule.addEvent(EventName.CHOOSE_SHAPE, new SelectShapeCommand(_settings.getDrawShapeSettings(), _uiModule));
     }
 }

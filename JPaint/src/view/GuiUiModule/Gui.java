@@ -1,19 +1,18 @@
 package view.GuiUiModule;
 
 import javax.swing.*;
-
 import viewInterfaces.EventName;
 import ControllerInterfaces.ICommand;
 import viewInterfaces.IDialogChoice;
 import viewInterfaces.UIModule;
+import view.IGuiWindow;
 
 public class Gui implements UIModule {
 
-    private final GuiWindow gui = new GuiWindow();
+    private final IGuiWindow gui;
 
-    @Override
-    public void initialize() {
-        gui.setVisible(true);
+    public Gui(IGuiWindow gui) {
+        this.gui = gui;
     }
     
 	@Override
